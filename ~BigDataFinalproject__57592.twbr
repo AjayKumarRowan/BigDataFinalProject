@@ -3342,7 +3342,7 @@
     </dashboard>
   </dashboards>
   <windows source-height='30'>
-    <window class='worksheet' maximized='true' name='Locations'>
+    <window class='worksheet' name='Locations'>
       <cards>
         <edge name='left'>
           <strip size='160'>
@@ -3376,7 +3376,7 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='-1' />
+      <active id='3' />
       <simple-id uuid='{1E32A4AE-6418-45B7-98D3-5F065FCB7B17}' />
     </window>
     <window class='worksheet' name='IPL FInal matches'>
@@ -3514,7 +3514,7 @@
       </cards>
       <simple-id uuid='{92AADEEC-C703-4183-951E-59CB9385D3DA}' />
     </window>
-    <window class='dashboard' name='Top 10 Batters and bowlers in IPL'>
+    <window class='dashboard' maximized='true' name='Top 10 Batters and bowlers in IPL'>
       <viewpoints>
         <viewpoint name='Top 10 Batters in IPL'>
           <zoom type='entire-view' />
@@ -3523,7 +3523,7 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='-1' />
+      <active id='4' />
       <simple-id uuid='{2ADF36F6-3E1E-4798-A24D-CDA28B0E02F8}' />
     </window>
     <window class='worksheet' name='Top 10 PlayerOfMatch in IPL'>
@@ -3585,7 +3585,7 @@
           <zoom type='entire-view' />
         </viewpoint>
       </viewpoints>
-      <active id='8' />
+      <active id='3' />
       <simple-id uuid='{E9727476-7B99-49A2-BFF5-3313844A85A1}' />
     </window>
   </windows>
