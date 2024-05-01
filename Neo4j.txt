@@ -1,0 +1,50 @@
+Neo4j : IPL_Ball_by_Ball_2008_2022.csv
+
+LOAD CSV WITH HEADERS FROM 'https://raw.githubusercontent.com/AjayKumarRowan/BigDataFinalProject/main/IPL_Ball_by_Ball_2008_2022.csv' AS row
+WITH row WHERE row.BattingTeam IS NOT NULL
+MERGE (delivery:Delivery {
+    ID: toInteger(COALESCE(row.ID, "1")),
+    innings: toInteger(row.innings),
+    overs: toInteger(row.overs),
+    ballnumber: toInteger(row.ballnumber),
+    batter: row.batter,
+    bowler: row.bowler,
+    batsman_run: toInteger(row.batsman_run),
+    extras_run: toInteger(row.extras_run),
+    total_run: toInteger(row.total_run),
+    isWicketDelivery: toInteger(row.isWicketDelivery),
+    player_out: row.player_out,
+    kind: row.kind,
+    fielders_involved: row.fielders_involved,
+    BattingTeam: row.BattingTeam
+});
+
+
+Neo4j : IPL_Matches_2008_2022.csv
+
+LOAD CSV WITH HEADERS FROM 'https://github.com/AjayKumarRowan/BigDataFinalProject/blob/main/IPL_Matches_2008_2022.csv' AS row
+WITH row,
+     split(row.Team1Players, ',') AS team1Players,
+     split(row.Team2Players, ',') AS team2Players
+MERGE (match:Match {
+    id: row.ID,
+    city: row.City,
+    date: row.Date,
+    season: row.Season,
+    matchNumber: row.MatchNumber,
+    team1: row.Team1,
+    team2: row.Team2,
+    venue: row.Venue,
+    tossWinner: row.TossWinner,
+    tossDecision: row.TossDecision,
+    superOver: row.SuperOver,
+    winningTeam: row.WinningTeam,
+    wonBy: row.WonBy,
+    margin: row.Margin,
+    method: row.method,
+    player_of_match: row.Player_of_Match,
+    umpire1: row.Umpire1,
+    umpire2: row.Umpire2
+})
+FOREACH (playerName in team1Players | MERGE (player:Player {name: playerName}) MERGE (player)-[:PLAYED_FOR]->(match))
+FOREACH (playerName in team2Players | MERGE (player:Player {name: playerName}) MERGE (player)-[:PLAYED_FOR]->(match));
